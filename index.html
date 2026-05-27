@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Online Cafe — Digital Studio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Orbs -->
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+
+  <!-- NAV -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <div class="nav-logo">Online<span>Cafe</span></div>
+      <ul class="nav-links">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#process">How We Work</a></li>
+        <li><a href="#team">Team</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <button class="nav-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Get a Quote</button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="container cont-test">
+      <span class="hero-tag">Open for Business</span>
+      <h1>Your digital<br/>presence, <em>crafted.</em></h1>
+      <p class="hero-sub">We're a small team that builds things that work — websites, analytics dashboards, sharp copy, and end-to-end solutions for businesses starting online.</p>
+      <div class="hero-actions">
+        <a href="#services" class="btn-primary">See Our Menu</a>
+        <a href="#contact" class="btn-ghost">Start a Project</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <div class="stat-num">40+</div>
+          <div class="stat-label">Projects Delivered</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">3 days</div>
+          <div class="stat-label">Avg. First Draft</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">100%</div>
+          <div class="stat-label">Remote & Async</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="container">
+      <div class="reveal">
+        <h2 class="section-title">Everything your business needs online.</h2>
+      </div>
+      <div class="services-grid reveal">
+        <div class="service-card">
+          <div class="service-icon">🌐</div>
+          <h3>Website Development</h3>
+          <p>Custom-built sites — landing pages, portfolios, business sites. Fast, mobile-first, and designed to convert.</p>
+          <span class="service-tag">From design to deploy</span>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">📊</div>
+          <h3>Analytics & Reporting</h3>
+          <p>We set up dashboards, interpret your data, and tell you what actually matters — no jargon, just decisions.</p>
+          <span class="service-tag">GA4 · Looker · Custom</span>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">✍️</div>
+          <h3>Copywriting</h3>
+          <p>From landing page headlines to email sequences — words that sound like you and move people to act.</p>
+          <span class="service-tag">Web · Email · Ads</span>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">🚀</div>
+          <h3>Launch Packages</h3>
+          <p>Going online for the first time? We handle the whole thing: brand, site, copy, and analytics in one go.</p>
+          <span class="service-tag">All-in-one</span>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">🔧</div>
+          <h3>Maintenance & Support</h3>
+          <p>Ongoing site updates, performance checks, and small tasks on demand — so you can focus on business.</p>
+          <span class="service-tag">Retainer or per-task</span>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">💬</div>
+          <h3>Digital Consulting</h3>
+          <p>Not sure where to start? We map out what you actually need and how to get there without wasting budget.</p>
+          <span class="service-tag">Strategy · Roadmap</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section id="process">
+    <div class="container">
+      <div class="process-inner">
+        <div>
+          <h2 class="section-title reveal">Simple process.<br/>Serious results.</h2>
+          <div class="process-steps">
+            <div class="step reveal">
+              <div class="step-num">01</div>
+              <div class="step-content">
+                <h4>Discovery Call</h4>
+                <p>We learn about your business, goals, and timeline. No templates — every project starts fresh.</p>
+              </div>
+            </div>
+            <div class="step reveal">
+              <div class="step-num">02</div>
+              <div class="step-content">
+                <h4>Proposal & Scope</h4>
+                <p>You get a clear breakdown of deliverables, timeline, and price. No surprises.</p>
+              </div>
+            </div>
+            <div class="step reveal">
+              <div class="step-num">03</div>
+              <div class="step-content">
+                <h4>Build & Review</h4>
+                <p>We work fast and share progress early. You give feedback, we iterate.</p>
+              </div>
+            </div>
+            <div class="step reveal">
+              <div class="step-num">04</div>
+              <div class="step-content">
+                <h4>Launch & Hand Off</h4>
+                <p>Everything is delivered clean and documented. You own it completely.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="process-visual reveal">
+          <div class="pv-ring">
+            <div class="pv-inner">
+              <div class="pv-core">☕</div>
+            </div>
+          </div>
+          <div class="pv-label">Always Brewing</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM -->
+  <section id="team">
+    <div class="container">
+      <div class="reveal">
+        <h2 class="section-title small-team">Small team.<br/>Full-stack capabilities.</h2>
+      </div>
+      <div class="team-grid">
+        <div class="team-card reveal">
+          <div class="team-avatar">👩‍💻</div>
+          <div class="team-info">
+            <h4>Alex Rivera</h4>
+            <div class="team-role">Lead Developer</div>
+            <p>Builds fast, clean, and accessible websites from scratch. Loves a good design challenge.</p>
+          </div>
+        </div>
+        <div class="team-card reveal">
+          <div class="team-avatar">📈</div>
+          <div class="team-info">
+            <h4>Jamie Osei</h4>
+            <div class="team-role">Analytics Lead</div>
+            <p>Turns messy data into clear decisions. Specializes in dashboards and conversion tracking.</p>
+          </div>
+        </div>
+        <div class="team-card reveal">
+          <div class="team-avatar">✍️</div>
+          <div class="team-info">
+            <h4>Mira Tanaka</h4>
+            <div class="team-role">Copywriter & Strategist</div>
+            <p>Writes copy that sounds human and sells. Runs brand voice projects from scratch.</p>
+          </div>
+        </div>
+        <div class="team-card reveal">
+          <div class="team-avatar">🎯</div>
+          <div class="team-info">
+            <h4>Sam Loera</h4>
+            <div class="team-role">Project Lead</div>
+            <p>Keeps everything on time and makes sure clients always know what's happening.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container">
+      <div class="contact-inner">
+        <div class="reveal">
+          <h2 class="section-title ready-to">Ready to start?<br/>Tell us what you need.</h2>
+          <p class="contact-sub">No commitment required. Tell us what you're working on and we'll get back to you within 24 hours.</p>
+        </div>
+        <form class="contact-form reveal" id="contactForm">
+          <div class="form-row">
+            <div class="form-group">
+              <label>Your Name</label>
+              <input type="text" placeholder="Jane Smith" required />
+            </div>
+            <div class="form-group">
+              <label>Email</label>
+              <input type="email" placeholder="jane@company.com" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Service Needed</label>
+            <select>
+              <option value="" disabled selected>Select a service...</option>
+              <option>Website Development</option>
+              <option>Analytics & Reporting</option>
+              <option>Copywriting</option>
+              <option>Launch Package</option>
+              <option>Maintenance & Support</option>
+              <option>Digital Consulting</option>
+              <option>Not sure yet</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Tell us about your project</label>
+            <textarea placeholder="What are you building? What's the timeline? Any context helps..."></textarea>
+          </div>
+          <button type="submit" class="form-submit">Send Message →</button>
+          <p class="form-note">We respond within 24 hours. Usually much faster.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-logo">Online<span>Cafe</span></div>
+      <div class="footer-copy">© 2025 OnlineCafe. All rights reserved.</div>
+      <div class="footer-links">
+        <a href="#services">Services</a>
+        <a href="#team">Team</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
