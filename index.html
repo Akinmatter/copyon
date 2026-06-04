@@ -413,34 +413,35 @@
       gap: 1rem;
     }
 
-    input,
+    input[type="text"],
+    input[type="email"],
     textarea,
-select {
-  width: 100%;
-  padding: 1rem;
-  border-radius: 14px;
-  border: 1px solid var(--border);
-  background: rgba(255,255,255,0.04);
-  color: white;
-  font-size: 1rem;
-  outline: none;
+    select {
+      width: 100%;
+      padding: 1rem;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.04);
+      color: white;
+      font-size: 1rem;
+      outline: none;
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+    }
 
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-}
-
-select option {
-  background: #0f172a;
-  color: white;
-}
+    select option {
+      background: #0f172a;
+      color: white;
+    }
 
     textarea {
       min-height: 150px;
       resize: vertical;
     }
 
-    input:focus,
+    input[type="text"]:focus,
+    input[type="email"]:focus,
     textarea:focus,
     select:focus {
       border-color: var(--cyan);
@@ -464,6 +465,12 @@ select option {
       opacity: 0.9;
     }
 
+    .submit-btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+
     .status {
       margin-top: 1rem;
       color: var(--green);
@@ -472,6 +479,89 @@ select option {
 
     .status.error {
       color: #ff4d4d;
+    }
+
+    /* ── CONSENT CHECKBOX ── */
+    .consent {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 6px;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .consent-box {
+      flex-shrink: 0;
+      width: 20px;
+      height: 20px;
+      border-radius: 6px;
+      border: 1.5px solid var(--border);
+      background: rgba(255,255,255,0.04);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: border-color .2s, background .2s, box-shadow .2s;
+    }
+
+    .consent-box svg {
+      opacity: 0;
+      transform: scale(0.5);
+      transition: opacity .15s, transform .15s;
+    }
+
+    /* Hidden native checkbox */
+    .consent input[type="checkbox"] {
+      position: absolute;
+      opacity: 0;
+      width: 0;
+      height: 0;
+      pointer-events: none;
+    }
+
+    /* Checked state */
+    .consent input[type="checkbox"]:checked + .consent-box {
+      background: linear-gradient(135deg, var(--cyan), var(--purple));
+      border-color: transparent;
+      box-shadow: 0 0 0 3px rgba(0,229,255,0.2);
+    }
+
+    .consent input[type="checkbox"]:checked + .consent-box svg {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    /* Hover state */
+    .consent:hover .consent-box {
+      border-color: rgba(0,229,255,0.4);
+    }
+
+    /* Error highlight when not checked on submit */
+    .consent-box.shake {
+      border-color: #ff4d4d !important;
+      box-shadow: 0 0 0 3px rgba(255,77,77,0.2) !important;
+      animation: shake .35s ease;
+    }
+
+    @keyframes shake {
+      0%,100% { transform: translateX(0); }
+      25%      { transform: translateX(-4px); }
+      75%      { transform: translateX(4px); }
+    }
+
+    .consent-text {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .consent-text a {
+      color: var(--cyan);
+      text-decoration: none;
+    }
+
+    .consent-text a:hover {
+      text-decoration: underline;
     }
 
     footer {
@@ -490,6 +580,68 @@ select option {
     .reveal.active {
       opacity: 1;
       transform: translateY(0);
+    }
+
+    .no-decor {
+      text-decoration: none;
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+      color: #7c3aed;
+    }
+
+    .footer {
+      padding: 40px 24px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      margin-top: 80px;
+    }
+
+    .footer-inner {
+      max-width: 950px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .copyright {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .footer a {
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 14px;
+      transition: 0.2s ease;
+      position: relative;
+    }
+
+    .footer a:hover {
+      color: white;
+    }
+
+    .footer a::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 0%;
+      height: 1px;
+      background: var(--cyan);
+      transition: 0.25s ease;
+    }
+
+    .footer a:hover::after {
+      width: 100%;
     }
 
     @media(max-width: 900px) {
@@ -529,28 +681,13 @@ select option {
 <nav>
   <div class="nav-wrap">
     <button class="no-decor" onclick="location.reload()">
-    <div class="logo">Copy<span>on</span></div>
-</button>
-
-    <script>
-      funcReload(){
-        location.reload();
-      }
-    </script>
-
-    <style>
-      .no-decor{
-        text-decoration: none;
-        background-color: transparent;
-        border: none;
-        cursor:pointer;
-        color: #7c3aed;
-      }
-    </style>
+      <div class="logo">Copy<span>on</span></div>
+    </button>
 
     <ul class="nav-links">
       <li><a href="#services">Services</a></li>
       <li><a href="#contact">Contact</a></li>
+      <li><a href="about.html">About us</a></li>
     </ul>
 
     <button class="nav-btn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
@@ -602,7 +739,7 @@ select option {
           </div>
 
           <div class="stat">
-            <h3>~30min</h3>
+            <h3>24h</h3>
             <p>Avg Response</p>
           </div>
         </div>
@@ -681,10 +818,10 @@ select option {
       <h2 class="section-title">Let's build something intelligent.</h2>
 
       <p class="section-sub" style="margin-bottom:1rem;">
-        Fill out the form and your message will be sent directly to our business email.
+        Fill out the form and your message will be sent directly to your business email.
       </p>
 
-      <form id="contactForm">
+      <form id="contactForm" novalidate>
 
         <div class="row">
           <input type="text" name="name" placeholder="Your Name" required>
@@ -705,6 +842,20 @@ select option {
 
         <textarea name="message" placeholder="Tell us about your project..." required></textarea>
 
+        <!-- Custom styled consent checkbox -->
+        <label class="consent">
+          <input type="checkbox" id="consentCheck">
+          <span class="consent-box" id="consentBox">
+            <svg width="12" height="10" viewBox="0 0 12 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M1 5L4.5 8.5L11 1.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          <span class="consent-text">
+            I agree to the <a href="tos.html" target="_blank">Terms of Service</a>
+            and <a href="privacypolicy.html" target="_blank">Privacy Policy</a>.
+          </span>
+        </label>
+
         <button type="submit" class="submit-btn">Send Message</button>
 
         <div class="status" id="status"></div>
@@ -714,8 +865,15 @@ select option {
   </div>
 </section>
 
-<footer>
-  © 2026 Copyon — Digital Studio.
+<footer class="footer">
+  <div class="footer-inner">
+    <p class="copyright">© 2026 Copyon — AI Digital Studio.</p>
+
+    <div class="footer-links">
+      <a href="privacypolicy.html">Privacy Policy</a>
+      <a href="tos.html">Terms of Service</a>
+    </div>
+  </div>
 </footer>
 
 <script>
@@ -723,7 +881,7 @@ select option {
   const revealItems = document.querySelectorAll('.reveal');
   const revealObserver = new IntersectionObserver(entries => {
     entries.forEach(entry => {
-      if(entry.isIntersecting){
+      if (entry.isIntersecting) {
         entry.target.classList.add('active');
       }
     });
@@ -731,27 +889,44 @@ select option {
   revealItems.forEach(item => revealObserver.observe(item));
 
   // ========== EMAILJS CONFIGURATION ==========
-  // 🔴 REPLACE THESE THREE VALUES WITH YOUR OWN FROM EMAILJS.COM
-  const EMAILJS_PUBLIC_KEY = '7JQaRZYaUseD2KERz';      // e.g., "user_abc123def"
-  const EMAILJS_SERVICE_ID  = 'service_g7zpgx9';     // e.g., "service_xyz789"
-  const EMAILJS_TEMPLATE_ID  = 'template_b986yrr';   // e.g., "template_contact"
+  const EMAILJS_PUBLIC_KEY  = '7JQaRZYaUseD2KERz';
+  const EMAILJS_SERVICE_ID  = 'service_g7zpgx9';
+  const EMAILJS_TEMPLATE_ID = 'template_b986yrr';
   // ============================================
 
-  // Initialize EmailJS
   emailjs.init(EMAILJS_PUBLIC_KEY);
 
-  const form = document.getElementById('contactForm');
-  const statusDiv = document.getElementById('status');
+  const form       = document.getElementById('contactForm');
+  const statusDiv  = document.getElementById('status');
+  const consentCheck = document.getElementById('consentCheck');
+  const consentBox   = document.getElementById('consentBox');
 
   form.addEventListener('submit', function(e) {
     e.preventDefault();
 
-    // Disable button to prevent double sending
-    const submitBtn = form.querySelector('.submit-btn');
+    // ── Consent gate ──────────────────────────────────────────
+    if (!consentCheck.checked) {
+      consentBox.classList.remove('shake');
+      // Force reflow so the animation re-triggers every time
+      void consentBox.offsetWidth;
+      consentBox.classList.add('shake');
+
+      statusDiv.textContent = '⚠️ Please agree to the Terms of Service and Privacy Policy.';
+      statusDiv.classList.add('error');
+
+      consentBox.addEventListener('animationend', () => {
+        consentBox.classList.remove('shake');
+      }, { once: true });
+
+      return; // Block submission
+    }
+    // ─────────────────────────────────────────────────────────
+
+    const submitBtn  = form.querySelector('.submit-btn');
     const originalText = submitBtn.textContent;
     submitBtn.disabled = true;
-    submitBtn.textContent = 'Sending...';
-    statusDiv.textContent = 'Sending message...';
+    submitBtn.textContent = 'Sending…';
+    statusDiv.textContent = 'Sending message…';
     statusDiv.classList.remove('error');
 
     emailjs.sendForm(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, '#contactForm')
@@ -762,17 +937,14 @@ select option {
         submitBtn.disabled = false;
         submitBtn.textContent = originalText;
       })
-.catch((error) => {
-  console.error('EmailJS FULL ERROR:', error);
-
-  statusDiv.textContent =
-    `❌ Error: ${error?.text || error?.message || JSON.stringify(error)}`;
-
-  statusDiv.classList.add('error');
-
-  submitBtn.disabled = false;
-  submitBtn.textContent = originalText;
-});
+      .catch((error) => {
+        console.error('EmailJS FULL ERROR:', error);
+        statusDiv.textContent =
+          `❌ Error: ${error?.text || error?.message || JSON.stringify(error)}`;
+        statusDiv.classList.add('error');
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalText;
+      });
   });
 </script>
 

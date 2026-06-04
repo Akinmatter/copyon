@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About Us | Copyon</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg: #050816;
+      --panel: rgba(15, 23, 42, 0.72);
+      --border: rgba(255,255,255,0.08);
+      --text: #f4f7ff;
+      --muted: #8b95b7;
+      --cyan: #00e5ff;
+      --purple: #7c3aed;
+      --shadow: 0 0 60px rgba(0,229,255,0.15);
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(124,58,237,0.18), transparent 30%),
+        radial-gradient(circle at bottom right, rgba(0,229,255,0.12), transparent 25%),
+        var(--bg);
+      color: var(--text);
+      padding: 100px 24px;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 40px 40px;
+      mask-image: radial-gradient(circle at center, black 40%, transparent 85%);
+      pointer-events: none;
+    }
+
+    .glow {
+      position: fixed;
+      width: 500px;
+      height: 500px;
+      filter: blur(120px);
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .glow-1 {
+      background: rgba(124,58,237,0.25);
+      top: -150px;
+      left: -100px;
+    }
+
+    .glow-2 {
+      background: rgba(0,229,255,0.18);
+      bottom: -120px;
+      right: -100px;
+    }
+
+    .container {
+      max-width: 950px;
+      margin: auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(3rem, 6vw, 5rem);
+      line-height: 1;
+      letter-spacing: -3px;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, var(--cyan), white, var(--purple));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .subtitle {
+      color: var(--muted);
+      font-size: 1.1rem;
+      line-height: 1.8;
+      margin-bottom: 3rem;
+    }
+
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 2.5rem;
+      backdrop-filter: blur(18px);
+      margin-bottom: 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(0,229,255,0.08), transparent, rgba(124,58,237,0.08));
+      pointer-events: none;
+    }
+
+    h2 {
+      font-family: 'Space Grotesk', sans-serif;
+      margin-bottom: 1rem;
+      padding-left: 12px;
+      position: relative;
+    }
+
+    h2::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 5px;
+      bottom: 5px;
+      width: 4px;
+      border-radius: 999px;
+      background: linear-gradient(var(--cyan), var(--purple));
+    }
+
+    p {
+      color: var(--muted);
+      line-height: 1.9;
+      margin-bottom: 1rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .stat {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.5rem;
+      text-align: center;
+    }
+
+    .stat h3 {
+      font-size: 2rem;
+      color: var(--cyan);
+      margin-bottom: 0.3rem;
+    }
+
+    ul {
+      margin-left: 1.2rem;
+      color: var(--muted);
+      line-height: 1.9;
+    }
+
+    li::marker {
+      color: var(--cyan);
+    }
+
+    .cta {
+      text-align: center;
+      margin-top: 3rem;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 1rem 1.6rem;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--cyan), var(--purple));
+      color: white;
+      font-weight: 600;
+      text-decoration: none;
+      box-shadow: var(--shadow);
+      transition: .3s;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 60px 16px;
+      }
+
+      .card {
+        padding: 1.5rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="glow glow-1"></div>
+<div class="glow glow-2"></div>
+
+<div class="container">
+
+  <h1>About Copyon</h1>
+
+  <p class="subtitle">
+    We are a modern digital studio focused on building high-performance websites,
+    brand systems, and digital experiences for startups, creators, and businesses
+    that want to stand out in a noisy online world.
+  </p>
+
+  <div class="card">
+    <h2>Who We Are</h2>
+    <p>
+      Copyon is a creative and technical studio combining design, development,
+      and strategy into one unified workflow. We don’t just build websites —
+      we build digital systems that help brands grow, convert, and scale.
+    </p>
+    <p>
+      Our approach blends clean UI, modern frontend engineering, conversion-focused
+      copywriting, and performance optimization.
+    </p>
+  </div>
+
+  <div class="card">
+    <h2>What We Do</h2>
+    <ul>
+      <li>High-end website design & development</li>
+      <li>Brand identity & visual systems</li>
+      <li>Conversion-focused landing pages</li>
+      <li>Copywriting & messaging strategy</li>
+      <li>Analytics dashboards & reporting</li>
+      <li>E-commerce & startup launch builds</li>
+      <li>Ongoing maintenance & optimization</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>Our Mission</h2>
+    <p>
+      To make modern digital presence accessible, fast, and visually world-class —
+      without unnecessary complexity or outdated agency workflows.
+    </p>
+    <p>
+      We believe every business deserves a digital identity that actually performs,
+      not just looks good.
+    </p>
+  </div>
+
+  <!-- <div class="card">
+    <h2>Results</h2>
+
+    <div class="grid">
+      <div class="stat">
+        <h3>+300%</h3>
+        <p>Engagement growth</p>
+      </div>
+
+      <div class="stat">
+        <h3>4.9★</h3>
+        <p>Client satisfaction</p>
+      </div>
+
+      <div class="stat">
+        <h3>24h</h3>
+        <p>Avg response time</p>
+      </div>
+    </div>
+  </div> -->
+
+  <div class="card">
+    <h2>Why Copyon</h2>
+    <p>
+      We move fast, think deeply, and build with precision. Every project is
+      designed with a balance of aesthetics, performance, and conversion strategy.
+    </p>
+    <p>
+      No bloated processes. No unnecessary layers. Just clean execution.
+    </p>
+  </div>
+
+  <div class="cta">
+    <a class="btn" href="index.html#contact">Start a Project</a>
+  </div>
+
+</div>
+
+</body>
+</html>
