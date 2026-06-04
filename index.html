@@ -680,9 +680,9 @@
 
 <nav>
   <div class="nav-wrap">
-    <button class="no-decor" onclick="location.reload()">
-      <div class="logo">Copy<span>on</span></div>
-    </button>
+    <button class="no-decor" onclick="document.getElementById('hero').scrollIntoView({behavior:'smooth'})">
+  <div class="logo">Copy<span>on</span></div>
+</button>
 
     <ul class="nav-links">
       <li><a href="#services">Services</a></li>
@@ -696,7 +696,7 @@
   </div>
 </nav>
 
-<section class="hero">
+<section class="hero" id="hero">
   <div class="container hero-grid">
 
     <div>
