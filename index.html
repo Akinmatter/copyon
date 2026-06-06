@@ -896,19 +896,31 @@
 
   emailjs.init(EMAILJS_PUBLIC_KEY);
 
-  const form       = document.getElementById('contactForm');
-  const statusDiv  = document.getElementById('status');
+  const form         = document.getElementById('contactForm');
+  const statusDiv    = document.getElementById('status');
   const consentCheck = document.getElementById('consentCheck');
   const consentBox   = document.getElementById('consentBox');
 
   form.addEventListener('submit', function(e) {
     e.preventDefault();
 
-    // ── Consent gate ──────────────────────────────────────────
+    // ── Trim values to prevent whitespace-only submission ──
+    const name    = form.name.value.trim();
+    const email   = form.email.value.trim();
+    const message = form.message.value.trim();
+    const service = form.service.value.trim();
+
+    if (!name || !email || !message || !service) {
+      statusDiv.textContent = '⚠️ Please complete all required fields.';
+      statusDiv.classList.add('error');
+      form.reportValidity(); // show browser hints
+      return; // Block submission
+    }
+
+    // ── Consent gate ──────────────────────────
     if (!consentCheck.checked) {
       consentBox.classList.remove('shake');
-      // Force reflow so the animation re-triggers every time
-      void consentBox.offsetWidth;
+      void consentBox.offsetWidth; // reset animation
       consentBox.classList.add('shake');
 
       statusDiv.textContent = '⚠️ Please agree to the Terms of Service and Privacy Policy.';
@@ -920,9 +932,9 @@
 
       return; // Block submission
     }
-    // ─────────────────────────────────────────────────────────
+    // ─────────────────────────────────────────
 
-    const submitBtn  = form.querySelector('.submit-btn');
+    const submitBtn = form.querySelector('.submit-btn');
     const originalText = submitBtn.textContent;
     submitBtn.disabled = true;
     submitBtn.textContent = 'Sending…';
