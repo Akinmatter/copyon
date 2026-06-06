@@ -910,10 +910,20 @@
     const message = form.message.value.trim();
     const service = form.service.value.trim();
 
+    // 1. Check for empty fields
     if (!name || !email || !message || !service) {
-      statusDiv.textContent = '⚠️ Please complete all required fields.';
+      statusDiv.textContent = ' Please complete all required fields.';
       statusDiv.classList.add('error');
       form.reportValidity(); // show browser hints
+      return; // Block submission
+    }
+
+    // 2. Validate email structure using Regex
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!emailRegex.test(email)) {
+      statusDiv.textContent = ' Please enter a valid email address.';
+      statusDiv.classList.add('error');
+      form.email.focus(); // Focus the email input for the user
       return; // Block submission
     }
 
@@ -923,7 +933,7 @@
       void consentBox.offsetWidth; // reset animation
       consentBox.classList.add('shake');
 
-      statusDiv.textContent = '⚠️ Please agree to the Terms of Service and Privacy Policy.';
+      statusDiv.textContent = ' Please agree to the Terms of Service and Privacy Policy.';
       statusDiv.classList.add('error');
 
       consentBox.addEventListener('animationend', () => {
@@ -943,7 +953,7 @@
 
     emailjs.sendForm(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, '#contactForm')
       .then(() => {
-        statusDiv.textContent = '✅ Message sent successfully! We\'ll get back to you soon.';
+        statusDiv.textContent = ' Message sent successfully! We\'ll get back to you soon.';
         statusDiv.classList.remove('error');
         form.reset();
         submitBtn.disabled = false;
@@ -952,7 +962,7 @@
       .catch((error) => {
         console.error('EmailJS FULL ERROR:', error);
         statusDiv.textContent =
-          `❌ Error: ${error?.text || error?.message || JSON.stringify(error)}`;
+          ` Error: ${error?.text || error?.message || JSON.stringify(error)}`;
         statusDiv.classList.add('error');
         submitBtn.disabled = false;
         submitBtn.textContent = originalText;
